@@ -18,19 +18,13 @@ export const handleConnection = (socket, uuid) => {
     console.log('Current users: ', getUser());
 
     
-    const { stages } = getGameAssets();
-
-    // stages 배열 0번째 = 첫 번째 스테이지
-    setStage(uuid, stages.data[0].id);
-
-    console.log('stage: ', getStage(uuid));
-
     socket.emit('connection!', { uuid });
 
 }
 
 
 export const handlerEvent = (io, socket, data) => {
+    
     //
     if ( !CLIENT_VERSION.includes(data.clientVersion) ) {
         socket.emit('response', { status: 'fail', message: "Client version mismatch" });

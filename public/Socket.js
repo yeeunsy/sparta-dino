@@ -1,6 +1,6 @@
 // 연동
 
-import { CLIENT_VERSION } from './Constants.js'; //클라이언트 버전
+import { CLIENT_VERSION } from './Constants.js';
 
 const socket = io('http://localhost:3000', {
   query: {

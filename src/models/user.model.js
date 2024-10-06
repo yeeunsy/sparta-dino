@@ -14,7 +14,7 @@ export const removeUser = (socketId) => {
     }
 }
 
-
+// 현재 유저
 export const getUser = () => {
     return users;
 };

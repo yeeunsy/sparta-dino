@@ -1,7 +1,7 @@
 import { getStage, setStage } from "../models/stage.model.js"
 
 
-
+// 스테이지 설정 
 export const moveStageHandler = (userId, payload) => {
 
     // 현재 스테이지  대상 스테이지
@@ -30,7 +30,7 @@ export const moveStageHandler = (userId, payload) => {
 
     // 다음 스테이지로 넘어갈 때
     // 5 = 임의로 정한 오차 범위
-    if (elapsedTime < 100 || elapsedTime > 105) {
+    if (elapsedTime < 10 || elapsedTime > 10.5) {
         return { status: 'fail', message: "invalid elapsed time" };
     }
 

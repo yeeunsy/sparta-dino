@@ -4,11 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { handleConnection, handleDisconnect, handlerEvent } from './helper.js';
 
 // 대기 함수
-
 const registerHandler = (io) => {
     io.on('connection', (socket) => {
 
-
+        // 접속 유저
         const userUUID = uuidv4();
         addUser({ uuid: userUUID, socketId: socket.id });
 

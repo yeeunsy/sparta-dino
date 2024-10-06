@@ -1,11 +1,14 @@
 // 게임 시작 핸들러
 import { getGameAssets } from '../init/assets.js';
-import { getStage, setStage } from '../models/stage.model.js';
+import { clearStage, getStage, setStage } from '../models/stage.model.js';
 
 
 export const gameStart = (uuid, payload) => {
-
+    
     const { stages } = getGameAssets();
+
+    //
+    clearStage(uuid);
 
     // stages 배열 0번째 = 첫 번째 스테이지
     setStage(uuid, stages.data[0].id, payload.timestamp);
@@ -46,7 +49,6 @@ export const gameEnd = (uuid, payload) => {
     }
 
     // DB 저장 시
-    
 
     return { status: 'success', message: "game end", score };
 }

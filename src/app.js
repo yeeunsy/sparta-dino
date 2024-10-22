@@ -8,9 +8,9 @@ const server = createServer(app);
 
 const PORT = 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
+app.use(express.json()); // JSON 파싱
+app.use(express.urlencoded({ extended: false })); // URL 인코딩, lib 사용 유무
+app.use(express.static('public')); // 정적 파일 서빙
 initSocket(server); // 소켓 추가
 
 app.get('/', (req, res) => {

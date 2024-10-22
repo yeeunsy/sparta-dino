@@ -2,12 +2,11 @@
 import { getGameAssets } from '../init/assets.js';
 import { clearStage, getStage, setStage } from '../models/stage.model.js';
 
-
+// 게임 시작
 export const gameStart = (uuid, payload) => {
-    
     const { stages } = getGameAssets();
 
-    //
+    // 스테이지 정보 초기화
     clearStage(uuid);
 
     // stages 배열 0번째 = 첫 번째 스테이지
@@ -17,9 +16,11 @@ export const gameStart = (uuid, payload) => {
     return { status: 'success' }
 }
 
+// 게임 종료
 export const gameEnd = (uuid, payload) => {
-
-    // 클라이언트 게임 종료 시 타임스탬프와 총 점수
+    console.log('게임 종료 ! : ', uuid, payload);
+    
+    // 클라이언트 게임 종료 시 게임 종료 타임스탬프와 총 점수 전달
     const { timestamp:gameEndTime, score } = payload;
     const stages = getStage(uuid);
 
@@ -31,7 +32,7 @@ export const gameEnd = (uuid, payload) => {
     let totalScore = 0;
 
     stages.forEach((stage, index) => {
-        let stageEndTime;
+        let stageEndTime; // 스테이지 종료 시간
         
         if (index === stage.length - 1) {
             stageEndTime = gameEndTime;
